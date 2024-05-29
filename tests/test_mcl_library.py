@@ -1,15 +1,14 @@
 import unittest
 from bls import BLS
-from bls.bn254 import BN254
 from web3 import Web3
 from .consts import VERIFIER_CONTRACT_ABI
 
 
 class EthereumContractTestCase(unittest.TestCase):
   def setUp(self):
-    # Connect to an Ethereum node
-    # self.web3 = Web3(Web3.HTTPProvider('https://data-seed-prebsc-1-s1.binance.org:8545'))
-    self.web3 = Web3(Web3.HTTPProvider('https://data-seed-prebsc-1-s2.binance.org:8545'))
+    # Connect to an BSC node
+    self.web3 = Web3(Web3.HTTPProvider('https://data-seed-prebsc-1-s1.binance.org:8545'))
+    # self.web3 = Web3(Web3.HTTPProvider('https://data-seed-prebsc-1-s2.binance.org:8545'))
     # self.web3 = Web3(Web3.HTTPProvider('https://data-seed-prebsc-2-s1.binance.org:8545'))
     # self.web3 = Web3(Web3.HTTPProvider('https://data-seed-prebsc-2-s2.binance.org:8545'))
 
@@ -103,42 +102,38 @@ class EthereumContractTestCase(unittest.TestCase):
     # Assert based on the expected result
     self.assertTrue(pairingSuccessful and siganatureIsValid, 'Aggregated signature with missing partner not verified')
 
+class TestMCLLibrary(unittest.TestCase):
 
-
-
-
-# class TestMCLLibrary(unittest.TestCase):
-
-#   def test_sign_and_verify(self):
-#     """Sign & verify should work"""
+  def test_sign_and_verify(self):
+    """Sign & verify should work"""
     
-#     # key_pair = BLS.create_key_pair()
-#     key_pair = BLS.create_key_pair(b"123456")
-#     message = BLS.hash_str("Hello, World!")
-#     message2 = BLS.hash_str("dummy text")
-#     signature = BLS.sign_short(message, key_pair)
-#     # verified = BLS.verify_short("dummy message".encode('utf-8'), signature, key_pair.pub_G2)
-#     self.assertTrue(BLS.verify_short(message, signature, key_pair.pub_G2))
-#     self.assertFalse(BLS.verify_short(message2, signature, key_pair.pub_G2))
+    # key_pair = BLS.create_key_pair()
+    key_pair = BLS.create_key_pair(b"123456")
+    message = BLS.hash_str("Hello, World!")
+    message2 = BLS.hash_str("dummy text")
+    signature = BLS.sign_short(message, key_pair)
+    # verified = BLS.verify_short("dummy message".encode('utf-8'), signature, key_pair.pub_G2)
+    self.assertTrue(BLS.verify_short(message, signature, key_pair.pub_G2))
+    self.assertFalse(BLS.verify_short(message2, signature, key_pair.pub_G2))
 
-#   def test_aggregation(self):
-#     """Signature aggregation should work"""
+  def test_aggregation(self):
+    """Signature aggregation should work"""
 
-#     key1 = BLS.create_key_pair()
-#     key2 = BLS.create_key_pair()
+    key1 = BLS.create_key_pair()
+    key2 = BLS.create_key_pair()
 
-#     message = BLS.hash_str("Hello, World!")
+    message = BLS.hash_str("Hello, World!")
 
-#     sign1 = BLS.sign_short(message, key1)
-#     sign2 = BLS.sign_short(message, key2)
+    sign1 = BLS.sign_short(message, key1)
+    sign2 = BLS.sign_short(message, key2)
 
-#     verified = BLS.verify_short(
-#       message,
-#       sign1 + sign2,
-#       key1.pub_G2 + key2.pub_G2
-#     )
+    verified = BLS.verify_short(
+      message,
+      sign1 + sign2,
+      key1.pub_G2 + key2.pub_G2
+    )
 
-#     self.assertTrue(verified)
+    self.assertTrue(verified)
 
 if __name__ == '__main__':
   unittest.main()

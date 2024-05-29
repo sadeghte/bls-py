@@ -11,13 +11,8 @@ G2_YB = 0x090689d0585ff075ec9e99ad690c3395bc4b313370b38ef355acdadcd122975b
 
 
 BN254.G1 = G1()
-BN254.G1.setStr(b"1 1 2");
+BN254.G1.setStr(b"1 1 2")
 
 BN254.G2 = G2()
-BN254.G2.setStr(f"1 {G2_XA} {G2_XB} {G2_YA} {G2_YB}".encode("utf-8"));
-# BN254.G2.setStr(f"1 {G2_XB} {G2_XA} {G2_YB} {G2_YA}".encode("utf-8"));
-# BN254.G2.setStr(f"1 {G2_YA} {G2_YB} {G2_XA} {G2_XB}".encode("utf-8"));
-# BN254.G2.setStr(f"1 {G2_YB} {G2_YA} {G2_XB} {G2_XA}".encode("utf-8"));
-
-# print(f"BN254.G2: {BN254.G2.getStr()}\n");
+BN254.G2.setStr(f"1 {G2_XA} {G2_XB} {G2_YA} {G2_YB}".encode("utf-8"))
 

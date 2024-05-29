@@ -14,11 +14,6 @@ FIELD_ORDER = 0x30644e72e131a029b85045b68181585d97816a916871ca8d3c208c16d87cfd47
 
 # convert bytes to args
 def b2x(_bytes: bytes) -> str:
-  # result = _bytes.decode("utf-8")
-  # if len(result) % 2 == 1:
-  #   result = "0" + result
-  # return "0x" + result
-
   return int(_bytes, 16)
 
 def point_G1(x: int, y: int) -> mcl.G1:

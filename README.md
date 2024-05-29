@@ -1,6 +1,6 @@
 # BLS Signature Library
 
-Sign &amp; verify messages using BLS signature to be verified on the ethereum smart contracts.
+Sign &amp; verify messages using BLS signature to be verified on the EigenLayer smart contracts.
 
 
 ### Install system dependencies
